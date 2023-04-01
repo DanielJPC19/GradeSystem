@@ -1,0 +1,93 @@
+¿Qué es una cápsula de conocimiento?
+-Una cápsula de conocimiento es un texto donde se describen situaciones, elementos o datos importantes del proyecto.
+-------------------------------------------------------------------
+Requerimiento Funcionales.
+
+RF1- Crear un proyecto (de un cliente <user>):
+//Se crearan 10 proyectos (máximo)
+	** Nombre del Proyecto
+	** Nombre del Cliente
+	** Fecha de Inicio del Proyecto
+	** Fecha de Finalización del Proyecto
+	** Valor del Presupuesto
+	** Gerentes de Green y del cliente
+		- Nombre
+		- Teléfono
+
+RF2- Asignación de Etapas:
+	** Etapa (inicio, análisis, diseño, ejecución, cierre y seguimiento y control del proyecto)
+		- Fecha de Inicio Planeada (ingresa usuario)
+		- Fecha de Finalización Planeada (ingresa usuario)
+		- Fecha de Inicio Real (por progama)
+		- Fecha de Finalización Real (por programa)
+		- Estado de aprobación (aprobada, no aprobada)
+		- Estado de activación (activa, no activa)
+
+RF3- Culminar Etapa:
+	** Etapa
+	** Estado (aprobada, no aprobada)
+
+RF4- Registrar Cápsula:
+//Máximo 50 cápsulas por etapa
+//Los colaboradores generan cápsulas de conocimiento.
+	* id
+	* Descripción a registrar (el conocimiento)
+	* tipo de capsula (técnico, gestión, dominio y experiencias)
+	* Colaborador (usuario, el que registra la cápsula)
+		- Nombre
+		- Cargo
+		- Lo aprendido con dicha situación
+
+RF5- Aprobación de Cápsulas:
+	* aprobación (aprobada, no aprobada)
+	* fecha de aprobación
+
+RF6- Publicación de Cápsulas de Conocimiento (organización)
+//Solo se publicaran las cápsulas de interés organizacional
+	* url:String
+	* interes organizacional (si, no)
+
+RF7- Consultar Cápsulas de Conocimiento
+	*palabra clave (dentro de hashtags)
+-----------------------------------------------------------------------------------------------
+Menu solicitado:
+- Crear proyecto (RF1) - Listo ^-^
+- Culminar etapa de un proyecto (RF3) - Listo ^-^
+- Registrar Cápsula de Conocimiento (RF4)
+- Aprobar Cápsula de Conocimiento (RF5)
+- Publicar Cápsula de Conocimiento (RF6)
+- Informar al usuario cuantas de las cápsulas registradas hay por cada tipo de cápsula
+- Informar al usuario un listado de lecciones aprendidas correspondientes a las cápsulas registradas en los proyectos, para una etapa en particular
+- Informar al usuario el nombre del proyecto con más cápsulas registradas
+- Informar al usuario si un colaborador (por el nombre) ha registrado cápsulas en algún proyecto
+- Informar al usuario las situaciones y lecciones aprendidas de las cápsulas aprobadas y publicadas, de acuerdo a una cadena de busqueda dada por él mismo. Esta cadena de búsqueda deberá ser encontrada en los hashtag.
+------------------------------------------------------------------------------------------------
+Entidades:
+1. Cápsula (50 cápsulas por etapa)
+	*id
+	*Situación, Descripción, Texto del Conocimiento
+	*Tipo de cápsula (técnico, gestión, dominio y experiencias)
+	//*nombre del colaborador
+	*Aprendizaje, lección aprendida
+	*Aprobación
+	*url
+2. Proyecto <<10 proyectos>>
+	*Nombre
+	*Fecha de Inicio (Planeadas)
+	*Fecha de Fin (Planeadas)
+	*Presupuesto del proyecto
+3. Etapa
+	*Nombre etapa (inicio, análisis, diseño, ejecución, cierre y seguimiento y control del proyecto)
+	*Fecha de Inicio Planeada
+	*Fecha de Fin Planeada
+	*Fecha de Inicio Real
+	*Fecha de Fin Real
+	*Aprobación de Cumplimiento
+	*Activa
+	*Cantidad de meses que dura cada etapa (arreglo)
+4. Gerente
+	*id
+	*nombre
+5. Colaborador
+	*id
+	*nombre
