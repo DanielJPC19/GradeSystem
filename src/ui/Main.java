@@ -62,6 +62,10 @@ public class Main{
 					culminatePhase();
 					exit = false;
 					break;
+				case 3:
+					registerCapsule();
+					exit = false;
+					break;
 				
 			}
 		}while(exit == false);
@@ -73,6 +77,77 @@ public class Main{
 		return calendar;
 	}
 	
+	/**
+	*registerCapsule: Create a capsule
+	*/
+	public void registerCapsule(){
+		String projectName;
+		String collaboratorName;
+		int phasePosition;
+		String description;
+		String type = "";
+		int forType;
+		String learning;
+		String[] hashtag = new String[3];
+		boolean exit = false;
+		String message = "";
+		
+		System.out.print("Type project's name: ");
+		projectName = reader.next();
+		System.out.print("Type collaborator's name: ");
+		collaboratorName = reader.next();
+		do{
+			System.out.println("At what phase are you going to register the capsule?");
+			System.out.printf("Start Phase (1)\nAnalisys Phase (2)\nDesign Phase (3)\nExecution Phase (4)\nClose and Following Phase (5)\nProject Control Phase (6)\n");
+			phasePosition = reader.nextInt();
+			if(phasePosition>0){
+				exit = true;
+			}else{
+				System.out.println("Type a correct Phase");
+			}
+		}while(exit == false);
+		System.out.println("Type the knowledge (description):");
+		description = reader.nextLine();
+		reader.nextLine();
+		exit = false;
+		do{
+			System.out.println("Type of project:");
+			System.out.printf("Technical (1)\nManagement (2)\nDomain (3)\nExperiences (4)\n");
+			forType = reader.nextInt();
+			if (forType>0 && forType<5){
+				switch (forType){
+					case 1:
+						type = "Technical";
+						break;
+					case 2:
+						type = "Management";
+						break;
+					case 3:
+						type = "Domain";
+						break;
+					case 4:
+						type = "Experiences ";
+						break;
+				}
+				exit = true;
+			}else{
+				System.out.println("Type a correct type of project");
+			}
+		}while(exit == false);
+		System.out.println("Learning of the project:");
+		learning = reader.nextLine();
+		reader.nextLine();
+		System.out.println("Type 3 keywords");
+		for (int i = 0; i<3; i++){
+			System.out.println("Keyword number " + (i+1));
+			hashtag[i]=reader.next();
+		}
+		message = controller.createCapsule(projectName, collaboratorName, phasePosition, description, type, learning, false, hashtag);
+		System.out.println(message);
+		
+		
+		/*createCapsule(String projectName, String collaboratorName, String phaseName, String description, String type, String learning, boolean approve, String[] hashtag)*/
+	}
 	/**
 	*culminatePhase: Deactive and approve a project's phase.
 	*/

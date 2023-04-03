@@ -7,6 +7,10 @@ public class KnowledgeCapsule{
 	*/
 	private String collaboratorName;
 	/**
+	*
+	*/
+	private String managerName;
+	/**
 	*Capsule id
 	*/
 	private String id;
@@ -40,11 +44,19 @@ public class KnowledgeCapsule{
 	private String[] hashtag;
 	
 	
-	public KnowledgeCapsule(String collaboratorName, String id, String description, String type, String learning, boolean approve, String url, String[] hashtag){
+	public KnowledgeCapsule(String collaboratorName/*, String id*/, String description, String type, String learning, boolean approve/*, String url*/, String[] hashtag){
 		this.collaboratorName = collaboratorName;
-		this.id = id;
+		//this.id = id;
 		this.description = description;
 		this.type = type;
 		this.learning = type;
+	}
+	
+	public void setUrl(String url){
+		this.url = url;
+	}
+	
+	public void setId(String id){
+		this.id = id;
 	}
 }

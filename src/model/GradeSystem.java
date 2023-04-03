@@ -98,11 +98,29 @@ public class GradeSystem{
 	}
 	
 	/**
-	*
+	*culminatePhase: End a phase
 	*/
 	public String culminatePhase(String name, boolean approve, boolean active){
 		int position = getProjectPosition(name);
 		String message = projects[position].culminatePhase(approve,active);
+		return message;
+	}
+	
+	/**
+	*
+	*/
+	public String createCapsule(String projectName, String collaboratorName, int phasePosition/*, String id*/, String description, String type, String learning, boolean approve, String[] hashtag){
+		String message = "";
+		boolean existProject = getExistentOfProject(projectName);
+		
+		if (existProject==false){
+			message = "The project does not exist";
+		}else{
+			int position = getProjectPosition(projectName);
+			String id = "p"+position;
+			KnowledgeCapsule capsule = new KnowledgeCapsule(collaboratorName, description, type, learning, approve, hashtag);
+			message = projects[position].createCapsule(phasePosition, id, capsule);
+		}
 		return message;
 	}
 	

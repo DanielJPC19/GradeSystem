@@ -98,7 +98,10 @@ public class Project{
 	}
 	
 	/**
-	*culminatePhase
+	*culminatePhase: End a phase
+	*@param approve Approve status of phase
+	*@param active Active status of phase
+	*@return message Message status of culminating
 	*/
 	public String culminatePhase(boolean approve, boolean active){
 		int position = getPositionActivePhase();
@@ -144,6 +147,15 @@ public class Project{
 	*/
 	public void setFinishDateReal(){
 		this.finishDateReal = calendar;
+	}
+	
+	/**
+	*
+	*/
+	public String createCapsule(int phasePosition, String id, KnowledgeCapsule capsule){
+		id += "p"+(phasePosition-1);
+		String message = phases[phasePosition-1].createCapsule(id,capsule);
+		return message;
 	}
 	
 	/*public String listPhases(){
