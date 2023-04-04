@@ -6,7 +6,6 @@ import java.util.Calendar;
 */
 public class Project{
 	
-	private Calendar calendar;
 	/**
 	*Name of the project.
 	*/
@@ -23,14 +22,6 @@ public class Project{
 	*Finish date of the project (planned).
 	*/
 	private Calendar finishDatePlanned;
-	/**
-	*Start date of the project (real).
-	*/
-	private Calendar startDateReal;
-	/**
-	*Finish date of the project (real).
-	*/
-	private Calendar finishDateReal;
 	/**
 	*Budget of the project.
 	*/
@@ -59,10 +50,8 @@ public class Project{
 		this.clientName = clientName;
 		this.startDatePlanned = startDatePlanned;
 		this.finishDatePlanned = finishDatePlanned;
-		this.startDateReal = calendar;
 		this.budget = budget;
 		this.phases = new Phase[SIZE_PHASE];
-		this.calendar = Calendar.getInstance();
 		this.managers = new Manager[SIZE_MANAGER];
 		/*this.manager = new Manager[SIZE_MANAGER];*/
 	}
@@ -75,7 +64,7 @@ public class Project{
 	*/
 	public String registerManager(int i, Manager manager){
 		managers[i]=manager;
-		message = "Manager has been created";
+		String message = "Manager has been created";
 		return message;
 	}
 	
@@ -154,14 +143,6 @@ public class Project{
 	public String getProjectName(){
 		return name;
 	}
-	
-	/**
-	*setFinishDateReal: Save the finish real date.
-	*/
-	public void setFinishDateReal(){
-		this.finishDateReal = calendar;
-	}
-	
 	/**
 	*createCapsule: Create a capsule.
 	*@param phasePosition Position in the array phases,.

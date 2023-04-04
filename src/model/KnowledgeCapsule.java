@@ -1,5 +1,8 @@
 package model;
 
+/**
+*This class represents the knowledge capsules.
+*/
 public class KnowledgeCapsule{
 	
 	/**

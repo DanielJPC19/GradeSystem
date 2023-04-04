@@ -77,7 +77,6 @@ public class Phase{
 	*/
 	public void setActive(boolean active){
 		this.active = active;
-		setFinishDateReal();
 	}
 	
 	private int getFirstValidPositionCapsule(){
@@ -154,7 +153,7 @@ public class Phase{
 		boolean exit = true;
 		for (int i = 0; i<SIZE_CAPSULE; i++){
 			if (capsules[i]!=null){
-				if (capsules[i].getApprove==true){
+				if (capsules[i].getApprove()==true){
 					message = "\nId  of Capsule: "+capsules[i].getId()+"\nUrl: "+capsules[i].getUrl();
 				}
 			}
