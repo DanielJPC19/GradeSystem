@@ -5,7 +5,13 @@ package model;
 */
 public class Manager{
 	
+	/**
+	*Name of the manager.
+	*/
 	private String name;
+	/**
+	*Phone of the manager.
+	*/
 	private String phone;
 	
 	public Manager(String name, String phone){

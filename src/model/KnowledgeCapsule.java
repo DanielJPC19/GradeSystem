@@ -3,11 +3,11 @@ package model;
 public class KnowledgeCapsule{
 	
 	/**
-	*Name of the collaborator (who register the capsule)
+	*Name of the collaborator (who register the capsule).
 	*/
 	private String collaboratorName;
 	/**
-	*
+	*Name of the manager who approves the capsule.
 	*/
 	private String managerName;
 	/**
@@ -53,29 +53,49 @@ public class KnowledgeCapsule{
 	}
 	
 	/**
-	*setUrl: save the capsule's url;
+	*setUrl: Save the capsule's url.
+	*@param url Url to save.
 	*/
 	public void setUrl(String url){
 		this.url = url;
 	}
 	/**
 	*setId: save the capsule's id;
+	*@param id Id to save.
 	*/
 	public void setId(String id){
 		this.id = id;
 	}
 	/**
-	*
+	*getId: Return the id of the capsule.
+	*@return id Id of the capsule.
 	*/
 	public String getId(){
 		return this.id;
 	}
 	/**
-	*
+	*getApprove: Return the approval of the capsule.
+	*@return approve Approval of the Capsule.
+	*/
+	public boolean getApprove(){
+		return this.approve;
+	}
+	/**
+	*getUrl: Return the url of the capsule.
+	*@return url Url of the capsule (html).
+	*/
+	public String getUrl(){
+		return this.url;
+	}
+	/**
+	*approveCapsule: Changes the approval of a capsule.
+	*@param managerName Name of the manager who approves the capsule.
+	*@return message Status of approval.
 	*/
 	public String approveCapsule(String managerName){
 		this.managerName = managerName;
 		this.approve = true;
-		return "The capsule has been approved";
+		String message = "The capsule has been approved";
+		return message;
 	}
 }

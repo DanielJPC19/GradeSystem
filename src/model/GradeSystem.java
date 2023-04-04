@@ -24,6 +24,7 @@ public class GradeSystem{
 	/**
 	*createProject: Create a project and add it in an array of projects.
 	*@param name Name of project.
+	*@param clientName Name of the client.
 	*@param startDate Start date of project.
 	*@param finishDate Finish date of project.
 	*@param budget Budget of the project.
@@ -45,7 +46,12 @@ public class GradeSystem{
 	}
 	
 	/**
-	*
+	*registerManager: Create a manager.
+	*@param projectName Name of the project.
+	*@param i Position of the manager's array.
+	*@param name Name of the manager.
+	*@param phone Phone of the manager.
+	*@return message Status of the creation.
 	*/
 	public String registerManager(String projectName,int i, String name, String phone){
 		int position = getProjectPosition(projectName);
@@ -110,7 +116,11 @@ public class GradeSystem{
 	}
 	
 	/**
-	*culminatePhase: End a phase
+	*culminatePhase: End a phase.
+	*@param name Name of the project.
+	*@param approve Project approval.
+	*@param active Project activation.
+	*@return message Status message.
 	*/
 	public String culminatePhase(String name, boolean approve, boolean active){
 		int position = getProjectPosition(name);
@@ -119,7 +129,16 @@ public class GradeSystem{
 	}
 	
 	/**
-	*
+	*createCapsule: Creates a knowledge capsule.
+	*@param projectName Name of the project.
+	*@param collaboratorName Who creates the capsule.
+	*@param phasePosition In which phase the capsule is to be registered.
+	*@param description The knowledge of the collaborator.
+	*@param type Type of capsule.
+	*@param learning Learning in the phase.
+	*@param approve Status of approval.
+	*@param hashtag Array with all the keywords.
+	*@return message Status of the creation.
 	*/
 	public String createCapsule(String projectName, String collaboratorName, int phasePosition/*, String id*/, String description, String type, String learning, boolean approve, String[] hashtag){
 		String message = "";
@@ -137,7 +156,11 @@ public class GradeSystem{
 	}
 	
 	/**
-	*
+	*approveCapsule: A manager approves a project capsule.
+	*@param nameProject Name of the project.
+	*@param nameManager Name of the manager.
+	*@param idCapsule Id of the capsule.
+	*@return message Status of the approval.
 	*/
 	public String approveCapsule(String nameProject, String nameManager, String idCapsule){
 		String message = "";
@@ -153,12 +176,19 @@ public class GradeSystem{
 	}
 	
 	/**
-	*listPhasesByProject: Get 
-	*@return message Message with all the phases
+	*publishCapsule: All capsules (with their urls) of a project that are approved are listed.
+	*@param projectName Name of the project.
+	*@return message Publication status.
 	*/
-	/*public String listPhasesByProject(String name){
-		int position = getProjectPosition(name);
-		String message = projects[position].listPhases();
+	public String publishCapsule(String projectName){
+		String message = "";
+		boolean existProject = getExistentOfProject(projectName);
+		if (existProject==false){
+			message = "The project does not exist";
+		}else{
+			int position = getProjectPosition(projectName);
+			message = projects[position].publishCapsule();
+		}
 		return message;
-	}*/
+	}
 }

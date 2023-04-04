@@ -67,9 +67,16 @@ public class Project{
 		/*this.manager = new Manager[SIZE_MANAGER];*/
 	}
 	
+	/**
+	*registerManager: Save a manager.
+	*@param i Position in the array managers.
+	*@param manager The manager, an object.
+	*@return message Registration status.
+	*/
 	public String registerManager(int i, Manager manager){
 		managers[i]=manager;
-		return "Manager has been created";
+		message = "Manager has been created";
+		return message;
 	}
 	
 	private int getFirstValidPosition(){
@@ -195,7 +202,10 @@ public class Project{
 		return position;
 	}
 	/**
-	*
+	*approveCapsule: Changes the approval status of a capsule.
+	*@param nameManager Name of the manager.
+	*@param idCapsule Id of the capsule.
+	*@return message Status of the approval.
 	*/
 	public String approveCapsule(String nameManager, String idCapsule){
 		String message = "";
@@ -214,11 +224,15 @@ public class Project{
 		return message;
 	}
 	
-	/*public String listPhases(){
+	/**
+	*publishCapsule: Publish all approved capsules.
+	*@return message The capsules that are approved.
+	*/
+	public String publishCapsule(){
 		String message = "";
-		for (int i = 0; i<SIZE_PHASE; i++){
-			message += phases[i].getName() + " ";
+		for (int i = 0; i<SIZE_PHASE;i++){
+			message += phases[i].publishCapsule();
 		}
 		return message;
-	}*/
+	}
 }

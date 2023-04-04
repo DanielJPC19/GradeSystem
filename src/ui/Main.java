@@ -70,6 +70,12 @@ public class Main{
 					approveCapsule();
 					exit = false;
 					break;
+				case 5:
+					publishCapsule();
+					exit = false;
+					break;
+				default:
+					System.out.println("The option does not exist, try again.");
 			}
 		}while(exit == false);
 	}//Method menu
@@ -81,7 +87,19 @@ public class Main{
 	}
 	
 	/**
-	*approveCapsule: Approves a class
+	*publishCapsule: Post a capsule with a url.
+	*/
+	public void publishCapsule(){
+		String message = "";
+		String projectName;
+		System.out.print("Type the project's name: ");
+		projectName = reader.next();
+		message = controller.publishCapsule(projectName);
+		System.out.println(message);
+	}
+	
+	/**
+	*approveCapsule: Approves a class.
 	*/
 	public void approveCapsule(){
 		String nameProject;
@@ -166,9 +184,6 @@ public class Main{
 		}
 		message = controller.createCapsule(projectName, collaboratorName, phasePosition, description, type, learning, false, hashtag);
 		System.out.println(message);
-		
-		
-		/*createCapsule(String projectName, String collaboratorName, String phaseName, String description, String type, String learning, boolean approve, String[] hashtag)*/
 	}
 	/**
 	*culminatePhase: Deactive and approve a project's phase.
@@ -191,7 +206,7 @@ public class Main{
 	
 	/**
 	*createProject: Ask the user for the project's data.
-	*
+	*@throws ParseException Exception to convert String to date.
 	*/
 	public void createProject() throws ParseException{
 		String name;
@@ -238,7 +253,6 @@ public class Main{
 		
 		System.out.println("------------------------------------------------------------");
 		initPhases(name);
-		/*initManagers();*/
 	}
 	
 	/**
@@ -258,6 +272,7 @@ public class Main{
 	/**
 	*initPhases: Initialize the six phases
 	*@param name Name of project
+	*@throws ParseException Exception to convert String to date.
 	*/
 	public void initPhases(String name) throws ParseException{
 		boolean existProject = controller.getExistentOfProject(name);
