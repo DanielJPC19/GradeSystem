@@ -63,7 +63,13 @@ public class Project{
 		this.budget = budget;
 		this.phases = new Phase[SIZE_PHASE];
 		this.calendar = Calendar.getInstance();
+		this.managers = new Manager[SIZE_MANAGER];
 		/*this.manager = new Manager[SIZE_MANAGER];*/
+	}
+	
+	public String registerManager(int i, Manager manager){
+		managers[i]=manager;
+		return "Manager has been created";
 	}
 	
 	private int getFirstValidPosition(){
@@ -150,11 +156,61 @@ public class Project{
 	}
 	
 	/**
-	*
+	*createCapsule: Create a capsule.
+	*@param phasePosition Position in the array phases,.
+	*@param id Id of capsule.
+	*@param capsule Object of capsule, the knowledge.
+	*@return message Status of creation
 	*/
 	public String createCapsule(int phasePosition, String id, KnowledgeCapsule capsule){
 		id += "p"+(phasePosition-1);
 		String message = phases[phasePosition-1].createCapsule(id,capsule);
+		return message;
+	}
+	
+	private int managerPosition(String name){
+		int position = -1;
+		boolean exit = false;
+		for (int i = 0; i<SIZE_MANAGER; i++){
+			if (managers[i].getName().equalsIgnoreCase(name)){
+				position = i;
+				exit = true;
+			}
+		}
+		return position;
+	}
+	
+	private int[] searchCapsule(String id){
+		boolean exit = false;
+		int[] position = new int[2];
+		position[0] = -1;
+		position[1] = -1;
+		for (int i = 0; i<SIZE_PHASE && exit==false; i++){
+			position[1]=phases[i].searchCapsuleById(id);
+			if (position[1]!=-1){
+				position[0] = i;
+				exit = true;
+			}
+		}
+		return position;
+	}
+	/**
+	*
+	*/
+	public String approveCapsule(String nameManager, String idCapsule){
+		String message = "";
+		int position = managerPosition(nameManager);
+		
+		if (position==-1){
+			message = "The manager does not exist";
+		}else{
+			int[] capsulePosition = searchCapsule(idCapsule);
+			if (capsulePosition[1]==-1){
+				message = "The capsule does not exist";
+			}else{
+				message = phases[capsulePosition[0]].approveCapsule(capsulePosition[1],managers[position].getName());
+			}
+		}
 		return message;
 	}
 	

@@ -43,10 +43,10 @@ public class Main{
 		do{
 			System.out.println("Exit (0)");
 			System.out.println("Create a project (1)");
-			System.out.println("Finish stage of a project(2)");
+			System.out.println("Finish stage of a project (2)");
 			System.out.println("Register a capsule (3)");
-			System.out.println("Approve a capsule(4)");
-			System.out.println("Publish a capsule(5)");
+			System.out.println("Approve a capsule (4)");
+			System.out.println("Publish a capsule (5)");
 			
 			option = reader.nextInt();
 			switch (option){
@@ -66,7 +66,10 @@ public class Main{
 					registerCapsule();
 					exit = false;
 					break;
-				
+				case 4:
+					approveCapsule();
+					exit = false;
+					break;
 			}
 		}while(exit == false);
 	}//Method menu
@@ -75,6 +78,25 @@ public class Main{
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		return calendar;
+	}
+	
+	/**
+	*approveCapsule: Approves a class
+	*/
+	public void approveCapsule(){
+		String nameProject;
+		String nameManager;
+		String idCapsule;
+		String message = "";
+		
+		System.out.print("Type the project's name: ");
+		nameProject = reader.next();
+		System.out.print("Type the manager's name: ");
+		nameManager = reader.next();
+		System.out.print("Type the capsule's id: ");
+		idCapsule = reader.next();
+		message = controller.approveCapsule(nameProject,nameManager,idCapsule);
+		System.out.println(message);
 	}
 	
 	/**
@@ -182,6 +204,8 @@ public class Main{
 		double budget;
 		String message;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String managerName;
+		String managerPhone;
 				
 		System.out.print("Type the project's name: ");
 		name = reader.next();
@@ -199,6 +223,19 @@ public class Main{
 		budget = reader.nextDouble();
 		message = controller.createProject(name,clientName,newStartDate,newFinishDate,budget);
 		System.out.println(message);
+		System.out.print("Type the name of client's manager:");
+		managerName = reader.next();
+		System.out.print("Type the phone:");
+		managerPhone = reader.next();
+		message = controller.registerManager(name,0,managerName,managerPhone);
+		System.out.println(message);
+		System.out.print("Type the name of green's manager:");
+		managerName = reader.next();
+		System.out.print("Type the phone:");
+		managerPhone = reader.next();
+		message = controller.registerManager(name,1,managerName,managerPhone);
+		System.out.println(message);
+		
 		System.out.println("------------------------------------------------------------");
 		initPhases(name);
 		/*initManagers();*/

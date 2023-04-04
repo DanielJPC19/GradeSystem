@@ -45,6 +45,18 @@ public class GradeSystem{
 	}
 	
 	/**
+	*
+	*/
+	public String registerManager(String projectName,int i, String name, String phone){
+		int position = getProjectPosition(projectName);
+		String message;
+		Manager manager = new Manager(name,phone);
+		message = projects[position].registerManager(i,manager);
+		return message;
+		
+	}
+	
+	/**
 	*getExistentOfProject: Search in all the array if the project exist, then return its existence.
 	*@param name Nmae of the project.
 	*@return exist Existent of a project.
@@ -120,6 +132,22 @@ public class GradeSystem{
 			String id = "p"+position;
 			KnowledgeCapsule capsule = new KnowledgeCapsule(collaboratorName, description, type, learning, approve, hashtag);
 			message = projects[position].createCapsule(phasePosition, id, capsule);
+		}
+		return message;
+	}
+	
+	/**
+	*
+	*/
+	public String approveCapsule(String nameProject, String nameManager, String idCapsule){
+		String message = "";
+		boolean existProject = getExistentOfProject(nameProject);
+		
+		if (existProject==false){
+			message = "The project does not exist";
+		}else{
+			int position = getProjectPosition(nameProject);
+			message = projects[position].approveCapsule(nameManager,idCapsule);
 		}
 		return message;
 	}

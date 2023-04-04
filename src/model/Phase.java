@@ -77,7 +77,28 @@ public class Phase{
 			capsules[position].setId(id);
 			capsules[position].setUrl(url);
 			message = "The capsule has been created";
+			message += ", the id of capsule is: " + capsules[position].getId();
 		}
+		return message;
+	}
+	
+	public int searchCapsuleById(String id){
+		int position = -1;
+		boolean exit = false;
+		for (int i = 0; i<SIZE_CAPSULE && exit==false; i++){
+				if (capsules[i]!=null){
+					if (capsules[i].getId().equalsIgnoreCase(id)){
+						position = i;
+						exit = true;
+					}
+				}
+		}
+		return position;
+	}
+	
+	public String approveCapsule(int position, String managerName){
+		String message = "";
+		message = capsules[position].approveCapsule(managerName);
 		return message;
 	}
 }

@@ -52,11 +52,30 @@ public class KnowledgeCapsule{
 		this.learning = type;
 	}
 	
+	/**
+	*setUrl: save the capsule's url;
+	*/
 	public void setUrl(String url){
 		this.url = url;
 	}
-	
+	/**
+	*setId: save the capsule's id;
+	*/
 	public void setId(String id){
 		this.id = id;
+	}
+	/**
+	*
+	*/
+	public String getId(){
+		return this.id;
+	}
+	/**
+	*
+	*/
+	public String approveCapsule(String managerName){
+		this.managerName = managerName;
+		this.approve = true;
+		return "The capsule has been approved";
 	}
 }
