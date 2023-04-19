@@ -101,4 +101,11 @@ public class KnowledgeCapsule{
 		String message = "The capsule has been approved";
 		return message;
 	}
+	
+	/**
+	*toString: Show the capsule information
+	*/
+	public String toString(){
+		return "\nCapsule Info:\nId: " + this.id + "\nCollaborator: " + this.collaboratorName + "\nLearning: " + this.learning + "\nDescription: " + this.description + "\nUrl: " + this.url;
+	}
 }

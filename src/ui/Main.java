@@ -47,6 +47,11 @@ public class Main{
 			System.out.println("Register a capsule (3)");
 			System.out.println("Approve a capsule (4)");
 			System.out.println("Publish a capsule (5)");
+			System.out.println("List capsules by type (6)");
+			System.out.println("List the learnings in a phase (7)");
+			System.out.println("Show the project that has more capsules (8)");
+			System.out.println("Count the capsules written by a collaborator (9)");
+			System.out.println("Search capsules that are approved and published (10)");
 			
 			option = reader.nextInt();
 			switch (option){
@@ -74,6 +79,9 @@ public class Main{
 					publishCapsule();
 					exit = false;
 					break;
+				case 6:
+					listCapsulesByType();
+					break;
 				default:
 					System.out.println("The option does not exist, try again.");
 			}
@@ -84,6 +92,47 @@ public class Main{
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		return calendar;
+	}
+	
+	/**
+	*listCapsulesByType: Show all the capsules that have a specific type.
+	*/
+	public void listCapsulesByType(){
+		String message = "";
+		boolean exit = false;
+		int type = 0;
+		
+		do{
+			System.out.println("Select the type of capsule:");
+			System.out.printf("Technical (1)\nManagement (2)\nDomain (3)\nExperiences (4)\n");
+			System.out.print("Option: ");
+			option = reader.nextInt();
+			if (option<1 || option >4){
+				System.out.println("The option typed does not exist, type a correct option.");
+				exit = false;
+			}else{
+				switch(option){
+					case 1:
+						type = 1;
+						exit = true;
+						break;
+					case 2:
+						type = 2;
+						exit = true;
+						break;
+					case 3:
+						type = 3;
+						exit = true;
+						break;
+					case 4:
+						type = 4;
+						exit = true;
+						break;
+				}
+			}
+		}while(exit==false);
+		message = controller.listCapsulesByType(type);
+		System.out.println(message);
 	}
 	
 	/**

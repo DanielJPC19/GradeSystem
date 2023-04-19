@@ -160,4 +160,28 @@ public class Phase{
 		}
 		return message;
 	}
+	
+	/**
+	*listCapsulesByType: Search a capsule based in its type.
+	*@param type The type of the capsule.
+	*@return message Status of the searching.
+	*/
+	public String listCapsulesByType(TypeCapsule type){
+		String message = "";
+		
+		for (int i = 0; i<SIZE_CAPSULE, i++){
+			if (capsules[i]!=null){
+				if (capsules[i].getApprove()==true && capsules[i].getPublish()==true){
+					message += capsules[i].toString();
+				}
+			}else if(capsules[0]==null){
+				message = "There's no any capsule that are approved or published"; 
+			}
+		}
+		if (message==""){
+			message = "There's no any capsule that are approved or published";
+		}
+		
+		return message;
+	}
 }

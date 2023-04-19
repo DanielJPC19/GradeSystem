@@ -206,4 +206,38 @@ public class GradeSystem{
 		}
 		return message;
 	}
+	
+	/**
+	*listCapsulesByType: Search a capsule based in its type.
+	*@param type The type of the capsule.
+	*@return message Status of the searching.
+	*/
+	public String listCapsulesByType(int type){
+		String message = "";
+		TypeCapsule newType = null;
+		switch (type){
+			case 1:
+				typeCapsule = newType.TECHNICAL;
+				break;
+			case 2:
+				typeCapsule = newType.MANAGEMENT;
+				break;
+			case 3:
+				typeCapsule = newType.DOMAIN;
+				break;
+			case 4:
+				typeCapsule = newType.EXPERIENCES;
+				break;
+		}
+		
+		for (int i = 0; i<SIZE_PROJECT;i++){
+			if (projects[i]!=null){
+				message+=projects[i].listCapsulesByType(newType);
+			}else if (projects[0]==null){
+				message = "There's no any capsule that are approved or published";
+			}
+		}
+		
+		return message;
+	}
 }
