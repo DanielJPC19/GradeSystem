@@ -140,8 +140,9 @@ public class GradeSystem{
 	*@param hashtag Array with all the keywords.
 	*@return message Status of the creation.
 	*/
-	public String createCapsule(String projectName, String collaboratorName, int phasePosition/*, String id*/, String description, String type, String learning, boolean approve, String[] hashtag){
+	public String createCapsule(String projectName, String collaboratorName, int phasePosition/*, String id*/, String description, int type, String learning, boolean approve, String[] hashtag){
 		String message = "";
+		TypeCapsule typeCapsule = null;
 		boolean existProject = getExistentOfProject(projectName);
 		
 		if (existProject==false){
@@ -149,7 +150,21 @@ public class GradeSystem{
 		}else{
 			int position = getProjectPosition(projectName);
 			String id = "p"+position;
-			KnowledgeCapsule capsule = new KnowledgeCapsule(collaboratorName, description, type, learning, approve, hashtag);
+			switch (type){
+				case 1:
+					typeCapsule = TypeCapsule.TECHNICAL;
+					break;
+				case 2:
+					typeCapsule = TypeCapsule.MANAGEMENT;
+					break;
+				case 3:
+					typeCapsule = TypeCapsule.DOMAIN;
+					break;
+				case 4:
+					typeCapsule = TypeCapsule.EXPERIENCES;
+					break;
+			}
+			KnowledgeCapsule capsule = new KnowledgeCapsule(collaboratorName, description, typeCapsule, learning, approve, hashtag);
 			message = projects[position].createCapsule(phasePosition, id, capsule);
 		}
 		return message;

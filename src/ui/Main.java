@@ -125,7 +125,7 @@ public class Main{
 		String collaboratorName;
 		int phasePosition;
 		String description;
-		String type = "";
+		int type = 0;
 		int forType;
 		String learning;
 		String[] hashtag = new String[3];
@@ -150,6 +150,8 @@ public class Main{
 		description = reader.nextLine();
 		reader.nextLine();
 		exit = false;
+		
+		//Modificar !!Importante cambiar el emvío de tipo por entero, variable bandera
 		do{
 			System.out.println("Type of project:");
 			System.out.printf("Technical (1)\nManagement (2)\nDomain (3)\nExperiences (4)\n");
@@ -157,16 +159,16 @@ public class Main{
 			if (forType>0 && forType<5){
 				switch (forType){
 					case 1:
-						type = "Technical";
+						type = 1;
 						break;
 					case 2:
-						type = "Management";
+						type = 2;
 						break;
 					case 3:
-						type = "Domain";
+						type = 3;
 						break;
 					case 4:
-						type = "Experiences ";
+						type = 4;
 						break;
 				}
 				exit = true;

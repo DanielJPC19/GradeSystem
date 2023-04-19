@@ -24,7 +24,7 @@ public class KnowledgeCapsule{
 	/**
 	*Capsule type
 	*/
-	private String type;
+	private TypeCapsule type;
 	/**
 	*The learning of the phase
 	*/
@@ -47,12 +47,12 @@ public class KnowledgeCapsule{
 	private String[] hashtag;
 	
 	
-	public KnowledgeCapsule(String collaboratorName/*, String id*/, String description, String type, String learning, boolean approve/*, String url*/, String[] hashtag){
+	public KnowledgeCapsule(String collaboratorName/*, String id*/, String description, TypeCapsule type, String learning, boolean approve/*, String url*/, String[] hashtag){
 		this.collaboratorName = collaboratorName;
 		//this.id = id;
 		this.description = description;
 		this.type = type;
-		this.learning = type;
+		this.learning = learning;
 	}
 	
 	/**
