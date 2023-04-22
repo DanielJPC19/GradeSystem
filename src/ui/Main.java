@@ -41,6 +41,7 @@ public class Main{
 		boolean exit = false;
 		
 		do{
+			System.out.printf("\n<-<-<-<-<- Welcome ->->->->->\n");
 			System.out.println("Exit (0)");
 			System.out.println("Create a project (1)");
 			System.out.println("Finish stage of a project (2)");
@@ -101,6 +102,7 @@ public class Main{
 		String message = "";
 		boolean exit = false;
 		int type = 0;
+		int option;
 		
 		do{
 			System.out.println("Select the type of capsule:");
@@ -200,7 +202,6 @@ public class Main{
 		reader.nextLine();
 		exit = false;
 		
-		//Modificar !!Importante cambiar el emvío de tipo por entero, variable bandera
 		do{
 			System.out.println("Type of project:");
 			System.out.printf("Technical (1)\nManagement (2)\nDomain (3)\nExperiences (4)\n");

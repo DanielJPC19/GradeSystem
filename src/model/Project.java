@@ -225,12 +225,15 @@ public class Project{
 	public String listCapsulesByType(TypeCapsule type){
 		String message = "";
 		
-		for (int i = 0; i<SIZE_PHASE, i++){
+		for (int i = 0; i<SIZE_PHASE; i++){
 			if (phases[i]!=null){
 				message += phases[i].listCapsulesByType(type);
 			}else if(phases[0]==null){
-				message = "There's no any capsule that are approved or published"; 
+				message = "There's no any capsule with that type."; 
 			}
+		}
+		if (message==""){
+			message = "There's no any capsule that are approved or published";
 		}
 		
 		return message;

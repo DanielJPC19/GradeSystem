@@ -204,6 +204,9 @@ public class GradeSystem{
 			int position = getProjectPosition(projectName);
 			message = projects[position].publishCapsule();
 		}
+		if (message == ""){
+			message = "No capsule has been approved.";
+		}
 		return message;
 	}
 	
@@ -217,16 +220,16 @@ public class GradeSystem{
 		TypeCapsule newType = null;
 		switch (type){
 			case 1:
-				typeCapsule = newType.TECHNICAL;
+				newType = newType.TECHNICAL;
 				break;
 			case 2:
-				typeCapsule = newType.MANAGEMENT;
+				newType = newType.MANAGEMENT;
 				break;
 			case 3:
-				typeCapsule = newType.DOMAIN;
+				newType = newType.DOMAIN;
 				break;
 			case 4:
-				typeCapsule = newType.EXPERIENCES;
+				newType = newType.EXPERIENCES;
 				break;
 		}
 		
@@ -234,7 +237,7 @@ public class GradeSystem{
 			if (projects[i]!=null){
 				message+=projects[i].listCapsulesByType(newType);
 			}else if (projects[0]==null){
-				message = "There's no any capsule that are approved or published";
+				message = "There's no any capsule with that type.";
 			}
 		}
 		

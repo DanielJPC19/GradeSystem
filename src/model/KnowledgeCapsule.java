@@ -54,7 +54,13 @@ public class KnowledgeCapsule{
 		this.type = type;
 		this.learning = learning;
 	}
-	
+	/**
+	*getType: Return type of capsule.
+	*@return type Type of capsule.
+	*/
+	public TypeCapsule getType(){
+		return this.type;
+	}
 	/**
 	*setUrl: Save the capsule's url.
 	*@param url Url to save.

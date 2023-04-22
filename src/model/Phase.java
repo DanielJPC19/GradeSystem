@@ -149,7 +149,7 @@ public class Phase{
 	*@return message The capsules that are approval.
 	*/
 	public String publishCapsule(){
-		String message = "No capsule has been approved.";
+		String message = "";
 		boolean exit = true;
 		for (int i = 0; i<SIZE_CAPSULE; i++){
 			if (capsules[i]!=null){
@@ -169,19 +169,13 @@ public class Phase{
 	public String listCapsulesByType(TypeCapsule type){
 		String message = "";
 		
-		for (int i = 0; i<SIZE_CAPSULE, i++){
+		for (int i = 0; i<SIZE_CAPSULE; i++){
 			if (capsules[i]!=null){
-				if (capsules[i].getApprove()==true && capsules[i].getPublish()==true){
+				if (capsules[i].getType()==type){
 					message += capsules[i].toString();
 				}
-			}else if(capsules[0]==null){
-				message = "There's no any capsule that are approved or published"; 
 			}
-		}
-		if (message==""){
-			message = "There's no any capsule that are approved or published";
-		}
-		
+		}	
 		return message;
 	}
 }
