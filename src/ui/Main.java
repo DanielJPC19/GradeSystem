@@ -353,9 +353,7 @@ public class Main{
 		String name;
 		String clientName;
 		String startDate;
-		String finishDate;
 		Calendar newStartDate;
-		Calendar newFinishDate;
 		Date date;
 		double budget;
 		String message;
@@ -371,15 +369,9 @@ public class Main{
 		startDate = reader.next();
 		date = sdf.parse(startDate);
 		newStartDate = dateToCalendar(date);
-		//Modificar, importante
-		System.out.println("Type the project's finish date in format <dd/MM/yyyy>:");
-		finishDate = reader.next();
-		//^^ Importante modificar ^^
-		date = sdf.parse(finishDate);
-		newFinishDate = dateToCalendar(date);
 		System.out.print("Type the project's budget: ");
 		budget = reader.nextDouble();
-		message = controller.createProject(name,clientName,newStartDate,newFinishDate,budget);
+		message = controller.createProject(name,clientName,newStartDate,budget);
 		System.out.println(message);
 		System.out.print("Type the name of client's manager:");
 		managerName = reader.next();
@@ -395,7 +387,8 @@ public class Main{
 		System.out.println(message);
 		
 		System.out.println("------------------------------------------------------------");
-		initPhases(name);
+		initPhases(name, newStartDate);
+		controller.setFinishDatePlanned(name);
 	}
 	
 	/**
@@ -415,101 +408,88 @@ public class Main{
 	/**
 	*initPhases: Initialize the six phases
 	*@param name Name of project
+	*@param startDate Start date of the project and the start phase.
 	*@throws ParseException Exception to convert String to date.
 	*/
-	public void initPhases(String name) throws ParseException{
+	public void initPhases(String name, Calendar startDate) throws ParseException{
 		boolean existProject = controller.getExistentOfProject(name);
 		if (existProject==true){
-			String startDate;
-			String finishDate;
 			Calendar newStartDate;
-			//Modificar
 			Calendar newFinishDate;
 			Date date;
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			String message;
+			int month;
 			
 			System.out.println("<Start Phase>");
-			System.out.println("Start date in format <dd/MM/yyyy>:");
-			startDate = reader.next();
-			date = sdf.parse(startDate);
-			newStartDate = dateToCalendar(date);
-			//Modificar
-			System.out.println("Finish date in format <dd/MM/yyyy>:");
-			finishDate = reader.next();
-			date = sdf.parse(finishDate);
-			newFinishDate = dateToCalendar(date);
-			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true);
+			System.out.print("Start date in format <dd/MM/yyyy>: ");
+			newStartDate = startDate;
+			System.out.println(sdf.format(newStartDate.getTime()));
+			System.out.println("Duration in months: ");
+			month = reader.nextInt();
+			newFinishDate = newStartDate;
+			newFinishDate.add(Calendar.MONTH, month);
+			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true,0,month);
 			System.out.println(message);
 			System.out.println(" ");
 			
 			System.out.println("<Analisys Phase>");
-			System.out.println("Start date in format <dd/MM/yyyy>:");
-			startDate = reader.next();
-			date = sdf.parse(startDate);
-			newStartDate = dateToCalendar(date);
-			//Modificar
-			System.out.println("Finish date in format <dd/MM/yyyy>:");
-			finishDate = reader.next();
-			date = sdf.parse(finishDate);
-			newFinishDate = dateToCalendar(date);
-			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true);
+			System.out.print("Start date in format <dd/MM/yyyy>: ");
+			newStartDate = newFinishDate;
+			System.out.println(sdf.format(newStartDate.getTime()));
+			System.out.println("Duration in months: ");
+			month = reader.nextInt();
+			newFinishDate = newStartDate;
+			newFinishDate.add(Calendar.MONTH, month);
+			message = controller.initPhases(name,"Analisys",newStartDate,newFinishDate,false,true,1,month);
 			System.out.println(message);
 			System.out.println(" ");
 			
 			System.out.println("<Design Phase>");
-			System.out.println("Start date in format <dd/MM/yyyy>:");
-			startDate = reader.next();
-			date = sdf.parse(startDate);
-			newStartDate = dateToCalendar(date);
-			//Modificar
-			System.out.println("Finish date in format <dd/MM/yyyy>:");
-			finishDate = reader.next();
-			date = sdf.parse(finishDate);
-			newFinishDate = dateToCalendar(date);
-			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true);
+			System.out.print("Start date in format <dd/MM/yyyy>: ");
+			newStartDate = newFinishDate;
+			System.out.println(sdf.format(newStartDate.getTime()));
+			System.out.println("Duration in months: ");
+			month = reader.nextInt();
+			newFinishDate = newStartDate;
+			newFinishDate.add(Calendar.MONTH, month);
+			message = controller.initPhases(name,"Design",newStartDate,newFinishDate,false,true,2,month);
 			System.out.println(message);
 			System.out.println(" ");
 			
 			System.out.println("<Execution Phase>");
-			System.out.println("Start date in format <dd/MM/yyyy>:");
-			startDate = reader.next();
-			date = sdf.parse(startDate);
-			newStartDate = dateToCalendar(date);
-			//Modificar
-			System.out.println("Finish date in format <dd/MM/yyyy>:");
-			finishDate = reader.next();
-			date = sdf.parse(finishDate);
-			newFinishDate = dateToCalendar(date);
-			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true);
+			System.out.print("Start date in format <dd/MM/yyyy>: ");
+			newStartDate = newFinishDate;
+			System.out.println(sdf.format(newStartDate.getTime()));
+			System.out.println("Duration in months: ");
+			month = reader.nextInt();
+			newFinishDate = newStartDate;
+			newFinishDate.add(Calendar.MONTH, month);
+			message = controller.initPhases(name,"Execution",newStartDate,newFinishDate,false,true,3,month);
 			System.out.println(message);
 			System.out.println(" ");
 			
 			System.out.println("<Close and Following Phase>");
-			System.out.println("Start date in format <dd/MM/yyyy>:");
-			startDate = reader.next();
-			date = sdf.parse(startDate);
-			newStartDate = dateToCalendar(date);
-			//Modificar
-			System.out.println("Finish date in format <dd/MM/yyyy>:");
-			finishDate = reader.next();
-			date = sdf.parse(finishDate);
-			newFinishDate = dateToCalendar(date);
-			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true);
+			System.out.print("Start date in format <dd/MM/yyyy>: ");
+			newStartDate = newFinishDate;
+			System.out.println(sdf.format(newStartDate.getTime()));
+			System.out.println("Duration in months: ");
+			month = reader.nextInt();
+			newFinishDate = newStartDate;
+			newFinishDate.add(Calendar.MONTH, month);
+			message = controller.initPhases(name,"Close and Following",newStartDate,newFinishDate,false,true,4,month);
 			System.out.println(message);
 			System.out.println(" ");
 			
 			System.out.println("<Project Control Phase>");
-			System.out.println("Start date in format <dd/MM/yyyy>:");
-			startDate = reader.next();
-			date = sdf.parse(startDate);
-			newStartDate = dateToCalendar(date);
-			//Modificar
-			System.out.println("Finish date in format <dd/MM/yyyy>:");
-			finishDate = reader.next();
-			date = sdf.parse(finishDate);
-			newFinishDate = dateToCalendar(date);
-			message = controller.initPhases(name,"Start",newStartDate,newFinishDate,false,true);
+			System.out.print("Start date in format <dd/MM/yyyy>: ");
+			newStartDate = newFinishDate;
+			System.out.println(sdf.format(newStartDate.getTime()));
+			System.out.println("Duration in months: ");
+			month = reader.nextInt();
+			newFinishDate = newStartDate;
+			newFinishDate.add(Calendar.MONTH, month);
+			message = controller.initPhases(name,"Project Control",newStartDate,newFinishDate,false,true,5,month);
 			System.out.println(message);
 			System.out.println(" ");
 		}else{

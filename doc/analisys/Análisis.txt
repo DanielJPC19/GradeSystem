@@ -62,7 +62,7 @@ Segunda Entrega
 - Informar al usuario un listado de lecciones aprendidas correspondientes a las cápsulas registradas en los proyectos, para una etapa en particular - Listo ^-^
 - Informar al usuario el nombre del proyecto con más cápsulas registradas - Listo ^-^
 - Informar al usuario si un colaborador (por el nombre) ha registrado cápsulas en algún proyecto - Listo ^-^
-- Informar al usuario las situaciones y lecciones aprendidas de las cápsulas aprobadas y publicadas, de acuerdo a una cadena de busqueda dada por él mismo. Esta cadena de búsqueda deberá ser encontrada en los hashtag. - Ya casi u_u
+- Informar al usuario las situaciones y lecciones aprendidas de las cápsulas aprobadas y publicadas, de acuerdo a una cadena de busqueda dada por él mismo. Esta cadena de búsqueda deberá ser encontrada en los hashtag. - Listo ^-^
 ------------------------------------------------------------------------------------------------
 Entidades:
 1. Cápsula (50 cápsulas por etapa)
@@ -78,6 +78,7 @@ Entidades:
 	*Fecha de Inicio (Planeadas)
 	*Fecha de Fin (Planeadas)
 	*Presupuesto del proyecto
+	*Cantidad de meses que dura cada etapa (arreglo)
 3. Etapa
 	*Nombre etapa (inicio, análisis, diseño, ejecución, cierre y seguimiento y control del proyecto)
 	*Fecha de Inicio Planeada
@@ -86,7 +87,6 @@ Entidades:
 	*Fecha de Fin Real
 	*Aprobación de Cumplimiento
 	*Activa
-	*Cantidad de meses que dura cada etapa (arreglo)
 4. Gerente
 	*id
 	*nombre

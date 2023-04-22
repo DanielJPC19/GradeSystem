@@ -9,7 +9,7 @@ public class Project{
 	/**
 	*Months of the phases ()
 	*/
-	private int[] months;
+	private int[] months;//Agregar
 	/**
 	*Name of the project.
 	*/
@@ -26,6 +26,10 @@ public class Project{
 	*Finish date of the project (planned).
 	*/
 	private Calendar finishDatePlanned;
+	/**
+	*Finish date of the project (real).
+	*/
+	private Calendar finishDateReal;//Agregar
 	/**
 	*Budget of the project.
 	*/
@@ -49,7 +53,7 @@ public class Project{
 	*/
 	private Manager[] managers;
 	
-	public Project(String name, String clientName, Calendar startDatePlanned, Calendar finishDatePlanned, double budget){
+	public Project(String name, String clientName, Calendar startDatePlanned/*, Calendar finishDatePlanned*/, double budget){
 		this.name = name;
 		this.clientName = clientName;
 		this.startDatePlanned = startDatePlanned;
@@ -58,7 +62,6 @@ public class Project{
 		this.phases = new Phase[SIZE_PHASE];
 		this.managers = new Manager[SIZE_MANAGER];
 		months = new int[6];
-		/*this.manager = new Manager[SIZE_MANAGER];*/
 	}
 	
 	/**
@@ -68,6 +71,30 @@ public class Project{
 	*/
 	public void setMonths(int i, int month){
 		this.months[i]=month;
+	}
+	/**
+	*setFinishDatePlanned: Set the finish date (planned) based in the months of duration of phases.
+	*/
+	public void setFinishDatePlanned(){
+		int total = 0;
+		
+		for (int i = 0; i<SIZE_PHASE; i++){
+			total += this.months[i];
+		}
+		this.finishDatePlanned = this.startDatePlanned;
+		this.finishDatePlanned.add(Calendar.MONTH, total);
+	}
+	/**
+	*setFinishDateReal: Set the finish date (real) based in the months of duration of phases.
+	*/
+	public void setFinishDateReal(){
+		int total = 0;
+		
+		for (int i = 0; i<SIZE_PHASE; i++){
+			total += this.months[i];
+		}
+		this.finishDatePlanned = this.startDatePlanned;
+		this.finishDatePlanned.add(Calendar.MONTH, total);
 	}
 	/**
 	*registerManager: Save a manager.
@@ -96,10 +123,12 @@ public class Project{
 	
 	/**
 	*addPhase: Create the phases' array.
-	*@param phase Object Phase
+	*@param phase Object Phase.
+	*@param i Position in the aray of months.
+	*@param month Month to save.
 	*@return message Status creation
 	*/
-	public String addPhase(Phase phase/*, int i, int month*/){
+	public String addPhase(Phase phase, int i, int month){
 		int position = getFirstValidPosition();
 		String message = "";
 		if (position==-1){
@@ -107,7 +136,7 @@ public class Project{
 			return message;
 		}else{
 			phases[position]=phase;
-			/*setMonths(i,month);*/
+			setMonths(i,month);
 			message = "The phase has been created";
 			return message;
 		}

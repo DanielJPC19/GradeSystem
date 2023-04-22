@@ -26,12 +26,11 @@ public class GradeSystem{
 	*@param name Name of project.
 	*@param clientName Name of the client.
 	*@param startDate Start date of project.
-	*@param finishDate Finish date of project.
 	*@param budget Budget of the project.
 	*@return message Status of creation.
 	*/
-	public String createProject(String name, String clientName, Calendar startDate, Calendar finishDate, double budget){
-		Project project = new Project(name, clientName, startDate, finishDate,budget);
+	public String createProject(String name, String clientName, Calendar startDate, double budget){
+		Project project = new Project(name, clientName, startDate, budget);
 		boolean exit = false;
 		String message = "The project has not been created";
 		
@@ -45,6 +44,14 @@ public class GradeSystem{
 		return message;
 	}
 	
+	/**
+	*setFinishDatePlanned: Set the finish date of the project, based in the array of months.
+	*@param name Name of the project.
+	*/
+	public void setFinishDatePlanned(String name){
+		int position = getProjectPosition(name);
+		projects[position].setFinishDatePlanned();
+	}
 	/**
 	*registerManager: Create a manager.
 	*@param projectName Name of the project.
@@ -208,14 +215,16 @@ public class GradeSystem{
 	*@param finishDate Finish date of phase
 	*@param approve Status of approvation of phase
 	*@param active Phase activation status
+	*@param i Represents the position in the months' array.
+	*@param month Month to save.
 	*@return message Message status
 	*/
-	public String initPhases(String projectName,String name, Calendar startDate, /*int i, int month,*/Calendar finishDate, boolean approve, boolean active){
+	public String initPhases(String projectName,String name, Calendar startDate, /*int i, int month,*/Calendar finishDate, boolean approve, boolean active, int i, int month){
 		String message = "The project does not exist";
 		int position = getProjectPosition(projectName);
 		
 		Phase phase = new Phase(name, startDate, finishDate,approve, active);
-		message = projects[position].addPhase(phase);
+		message = projects[position].addPhase(phase,i,month);
 		return message;
 	}
 	
