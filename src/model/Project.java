@@ -277,4 +277,23 @@ public class Project{
 		
 		return totalCapsules;
 	}
+	
+	/**
+	*collaboratorCapsules: Search and return the number of capsules that the collaborator has written.
+	*@param collaboratorName Name of the collaborator
+	*@return message Message with the status of searching.
+	*/
+	public String collaboratorCapsules(String collaboratorName){
+		String message = "";
+		int numberCapsules = 0;
+		
+		for (int i = 0; i<SIZE_PHASE; i++){
+			numberCapsules += phases[i].collaboratorCapsules(collaboratorName);
+		}
+		
+		if (numberCapsules!=0){
+			message = "The collaborator has written " + numberCapsules + " capsule(s).";
+		}
+		return message;
+	}
 }

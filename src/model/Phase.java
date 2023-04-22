@@ -211,4 +211,23 @@ public class Phase{
 		}
 		return message;
 	}
+	
+	/**
+	*collaboratorCapsules: Return the number of capsules in a phase of a collaborator if he exists.
+	*@param collaboratorName Name of the collaborator.
+	*@return numberCapsules Number of capsules written by the collaborator.
+	*/
+	public int collaboratorCapsules(String collaboratorName){
+		int numberCapsules = 0;
+		
+		for (int i = 0; i<SIZE_CAPSULE; i++){
+			if (capsules[i]!=null){
+				if (capsules[i].getCollaboratorName().equalsIgnoreCase(collaboratorName)){
+					numberCapsules += 1;
+				}
+			}
+		}
+		
+		return numberCapsules;
+	}
 }

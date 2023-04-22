@@ -93,7 +93,7 @@ public class Main{
 					exit = false;
 					break;
 				case 9:
-					/*countCollaboratorCapsules();*/
+					countCollaboratorCapsules();
 					exit = false;
 					break;
 				default:
@@ -106,6 +106,23 @@ public class Main{
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		return calendar;
+	}
+	
+	/**
+	*countCollaboratorCapsules: Show the number of capsules that the collaborator has written.
+	*/
+	public void countCollaboratorCapsules(){
+		String message = "";
+		String projectName;
+		String collaboratorName;
+		
+		System.out.print("Type the project's name: ");
+		projectName = reader.next();
+		System.out.print("Type the collaborator's name: ");
+		collaboratorName = reader.next();
+		
+		message = controller.collaboratorCapsules(projectName, collaboratorName);
+		System.out.println(message);
 	}
 	
 	/**

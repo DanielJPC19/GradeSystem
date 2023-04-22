@@ -116,6 +116,27 @@ public class GradeSystem{
 		}
 		return message;
 	}
+	
+	/**
+	*collaboratorCapsules: Return the number of capsules that the collaborator has written.
+	*@param projectName Name of the project.
+	*@param collaboratorName Name of the collaborator.
+	*@return message Status of the searching.
+	*/
+	public String collaboratorCapsules(String projectName, String collaboratorName){
+		int position = getProjectPosition(projectName);
+		String message = "";
+		
+		if (position==-1){
+			message = "The project does not exist";
+		}else{
+			message = projects[position].collaboratorCapsules(collaboratorName);
+		}
+		if (message == ""){
+			message = "The collaborator has not written any capsule.";
+		}
+		return message;
+	}
 	/**
 	*showProjectWithMoreCapsules: Show the project that has more capsules.
 	*@return message Status of the searching.

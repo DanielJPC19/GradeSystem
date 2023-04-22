@@ -97,6 +97,13 @@ public class KnowledgeCapsule{
 		return this.url;
 	}
 	/**
+	*getCollaboratorName: Return the collaborator name of the capsule.
+	*@return collaboratorName Name of the collaborator.
+	*/
+	public String getCollaboratorName(){
+		return this.collaboratorName;
+	}
+	/**
 	*approveCapsule: Changes the approval of a capsule.
 	*@param managerName Name of the manager who approves the capsule.
 	*@return message Status of approval.
