@@ -296,4 +296,19 @@ public class Project{
 		}
 		return message;
 	}
+	
+	/**
+	*approvedAndPublishedCapsules: Search and returns those capsules that are approved and published.
+	*@param keywords Keywords to search capsules.
+	*@return message Status of the searching.
+	*/
+	public String approvedAndPublishedCapsules(String[] keywords){
+		String message = "";
+		
+		for (int i = 0; i<SIZE_PHASE; i++){
+			message += phases[i].approvedAndPublishedCapsules(keywords);
+		}
+		
+		return message;
+	}
 }

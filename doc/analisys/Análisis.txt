@@ -61,8 +61,8 @@ Segunda Entrega
 - Informar al usuario cuantas de las cápsulas registradas hay por cada tipo de cápsula - Listo ^-^
 - Informar al usuario un listado de lecciones aprendidas correspondientes a las cápsulas registradas en los proyectos, para una etapa en particular - Listo ^-^
 - Informar al usuario el nombre del proyecto con más cápsulas registradas - Listo ^-^
-- Informar al usuario si un colaborador (por el nombre) ha registrado cápsulas en algún proyecto
-- Informar al usuario las situaciones y lecciones aprendidas de las cápsulas aprobadas y publicadas, de acuerdo a una cadena de busqueda dada por él mismo. Esta cadena de búsqueda deberá ser encontrada en los hashtag.
+- Informar al usuario si un colaborador (por el nombre) ha registrado cápsulas en algún proyecto - Listo ^-^
+- Informar al usuario las situaciones y lecciones aprendidas de las cápsulas aprobadas y publicadas, de acuerdo a una cadena de busqueda dada por él mismo. Esta cadena de búsqueda deberá ser encontrada en los hashtag. - Ya casi u_u
 ------------------------------------------------------------------------------------------------
 Entidades:
 1. Cápsula (50 cápsulas por etapa)

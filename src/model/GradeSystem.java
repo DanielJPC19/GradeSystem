@@ -71,8 +71,10 @@ public class GradeSystem{
 		boolean exist = false;
 		
 		for (int i = 0; i<SIZE_PROJECT && exist==false; i++){
-			if ((projects[i].getProjectName()).equalsIgnoreCase(name)){
-				exist = true;
+			if (projects[i]!=null){
+				if ((projects[i].getProjectName()).equalsIgnoreCase(name)){
+					exist = true;
+				}
 			}
 		}
 		return exist;
@@ -88,14 +90,36 @@ public class GradeSystem{
 		boolean exit = false;
 		
 		for (int i = 0; i<SIZE_PROJECT && exit==false; i++){
-			if ((projects[i].getProjectName()).equalsIgnoreCase(name)){
-				position = i;
-				exit = true;
+			if (projects[i]!=null){
+				if ((projects[i].getProjectName()).equalsIgnoreCase(name)){
+					position = i;
+					exit = true;
+				}
 			}
 		}
 		return position;
 	}
-	
+	/**
+	*approvedAndPublishedCapsules: Search and returns those capsules that are approved and published. 
+	*@param projectName Name of the project.
+	*@param keywords Array with keywords to search.
+	*@return message Status of the searching.
+	*/
+	public String approvedAndPublishedCapsules(String projectName, String[] keywords){
+		String message = "";
+		
+		int position = getProjectPosition(projectName);
+		if (position == -1){
+			message = "The project does not exist.";
+		}else{
+			message = projects[position].approvedAndPublishedCapsules(keywords);
+		}
+		
+		if (message == ""){
+			message = "There's no any capsule that are approved, published or have that keywords";
+		}
+		return message;
+	}
 	/**
 	*listLearningsByPhase: Show all the learnings of a capsule in a phase.
 	*@param projectName Name of the project.

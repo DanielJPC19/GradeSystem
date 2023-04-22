@@ -96,6 +96,10 @@ public class Main{
 					countCollaboratorCapsules();
 					exit = false;
 					break;
+				case 10:
+					approvedAndPublishedCapsules();
+					exit = false;
+					break;
 				default:
 					System.out.println("The option does not exist, try again.");
 			}
@@ -108,6 +112,25 @@ public class Main{
 		return calendar;
 	}
 	
+	/**
+	*approvedAndPublishedCapsules: Search with keywords for those capsules that are approved and published.
+	*/
+	public void approvedAndPublishedCapsules(){
+		String message = "";
+		String projectName;
+		String[] keywords = new String[3];
+		
+		System.out.print("Type the project's name: ");
+		projectName = reader.next();
+		for (int i = 0; i<3; i++){
+			System.out.print("Keyword No " + (i+1) + ": ");
+			System.out.println("Value: " + i);
+			keywords[i] = reader.next();
+		}
+		
+		message = controller.approvedAndPublishedCapsules(projectName,keywords);
+		System.out.println(message);
+	}
 	/**
 	*countCollaboratorCapsules: Show the number of capsules that the collaborator has written.
 	*/

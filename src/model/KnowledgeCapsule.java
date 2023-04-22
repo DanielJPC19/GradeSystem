@@ -52,7 +52,9 @@ public class KnowledgeCapsule{
 		//this.id = id;
 		this.description = description;
 		this.type = type;
+		this.approve = approve;
 		this.learning = learning;
+		this.hashtag = hashtag;
 	}
 	/**
 	*getType: Return type of capsule.
@@ -128,5 +130,19 @@ public class KnowledgeCapsule{
 	*/
 	public String getLearning(){
 		return this.learning;
+	}
+	/**
+	*getDescription: Return the description of the capsule.
+	*@return description Description of the capsule.
+	*/
+	public String getDescription(){
+		return this.description;
+	}
+	/**
+	*getHashtag: Return the hashtag or keywords of the capsule.
+	*@return hashtag Hashtag of the capsule.
+	*/
+	public String[] getHashtag(){
+		return this.hashtag;
 	}
 }

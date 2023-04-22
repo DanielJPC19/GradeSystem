@@ -230,4 +230,32 @@ public class Phase{
 		
 		return numberCapsules;
 	}
+	
+	/**
+	*approvedAndPublishedCapsules: Search and returns those capsules that are approved and published.
+	*@param keywords Keywords to search capsules.
+	*@return message Status of the searching.
+	*/
+	public String approvedAndPublishedCapsules(String[] keywords){
+		String message = "";
+		String[] hashtag;
+		boolean exit = false;
+		
+		for (int i = 0; i<SIZE_CAPSULE; i++){
+			exit = false;
+			if (capsules[i]!=null){
+				hashtag = capsules[i].getHashtag();
+				for (int j = 0; j<keywords.length && exit == false; j++){
+					for (int k = 0; k<hashtag.length && exit == false; k++){
+						if(hashtag[k].equalsIgnoreCase(keywords[j]) && capsules[i].getApprove()==true ){//agregar verificación de publicado
+							message += "\nCapsule info:" + "\nLearning: " + capsules[i].getLearning() + "\nDescription: " + capsules[i].getDescription() + "\n";
+							exit = true;
+						}
+					}
+				}
+			}
+		}
+		
+		return message;
+	}
 }
