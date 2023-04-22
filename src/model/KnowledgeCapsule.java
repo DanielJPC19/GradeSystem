@@ -114,4 +114,12 @@ public class KnowledgeCapsule{
 	public String toString(){
 		return "\nCapsule Info:\nId: " + this.id + "\nCollaborator: " + this.collaboratorName + "\nLearning: " + this.learning + "\nDescription: " + this.description + "\nUrl: " + this.url;
 	}
+	
+	/**
+	*getLearning: Return the learning of the capsule.
+	*@return learning Learning of the capsule.
+	*/
+	public String getLearning(){
+		return this.learning;
+	}
 }

@@ -7,6 +7,10 @@ import java.util.Calendar;
 public class Project{
 	
 	/**
+	*Months of the phases ()
+	*/
+	private int[] months;
+	/**
 	*Name of the project.
 	*/
 	private String name;
@@ -53,9 +57,18 @@ public class Project{
 		this.budget = budget;
 		this.phases = new Phase[SIZE_PHASE];
 		this.managers = new Manager[SIZE_MANAGER];
+		months = new int[6];
 		/*this.manager = new Manager[SIZE_MANAGER];*/
 	}
 	
+	/**
+	*setMonths: Save the month in the array months.
+	*@param i Position in the array.
+	*@param month Month to save.
+	*/
+	public void setMonths(int i, int month){
+		this.months[i]=month;
+	}
 	/**
 	*registerManager: Save a manager.
 	*@param i Position in the array managers.
@@ -86,7 +99,7 @@ public class Project{
 	*@param phase Object Phase
 	*@return message Status creation
 	*/
-	public String addPhase(Phase phase){
+	public String addPhase(Phase phase/*, int i, int month*/){
 		int position = getFirstValidPosition();
 		String message = "";
 		if (position==-1){
@@ -94,6 +107,7 @@ public class Project{
 			return message;
 		}else{
 			phases[position]=phase;
+			/*setMonths(i,month);*/
 			message = "The phase has been created";
 			return message;
 		}
@@ -237,5 +251,30 @@ public class Project{
 		}
 		
 		return message;
+	}
+	
+	/**
+	*listLearnings: Show all the learnings of a capsule in a phase.
+	*@param phase Position of the phase in the array phases.
+	*@return message Status of the showing.
+	*/
+	public String listLearnings(int phase){
+		String message = "";
+		message = phases[phase].listLearnings();
+		return message;
+	}
+	
+	/**
+	*countCapsules: Count all the capsules of the project.
+	*@return totalCapsules Number of capsules in the project.
+	*/
+	public int countCapsules(){
+		int totalCapsules = 0;
+		
+		for (int i = 0; i<SIZE_PHASE; i++){
+			totalCapsules += phases[i].countCapsules();
+		}
+		
+		return totalCapsules;
 	}
 }

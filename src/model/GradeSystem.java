@@ -97,6 +97,65 @@ public class GradeSystem{
 	}
 	
 	/**
+	*listLearningsByPhase: Show all the learnings of a capsule in a phase.
+	*@param projectName Name of the project.
+	*@param phase Position of the phase in the array phases.
+	*@return message Status of the showing.
+	*/
+	public String listLearningsByPhase(String projectName, int phase){
+		String message = "";
+		int position = getProjectPosition(projectName);
+		
+		if (position == -1){
+			message = "The project does not exist";
+		}else{
+			message = projects[position].listLearnings(phase);
+		}
+		if (message == ""){
+			message = "There's no any capsule.";
+		}
+		return message;
+	}
+	/**
+	*showProjectWithMoreCapsules: Show the project that has more capsules.
+	*@return message Status of the searching.
+	*/
+	public String showProjectWithMoreCapsules(){
+		int[] numberCapsules = new int[SIZE_PROJECT];
+		int projectMoreCapsules = -1;
+		String message = "";
+		
+		for (int i = 0; i<SIZE_PROJECT; i++){
+			numberCapsules[i] = -1;
+		}
+		
+		for (int i = 0; i<SIZE_PROJECT; i++){
+			if (projects[i]!=null){
+				numberCapsules[i] = projects[i].countCapsules();
+			}
+		}
+		
+		for (int i = 0; i<SIZE_PROJECT; i++){
+			if (numberCapsules[0]!=-1){				
+				if (i==0){
+					projectMoreCapsules = i;
+				}else if(numberCapsules[i]<numberCapsules[i]){
+					projectMoreCapsules = i;
+				}
+			}else{
+				projectMoreCapsules = -1;
+			}
+		}
+		
+		if (projectMoreCapsules==-1){
+			message = "There's no any project registered";
+		}else{
+			message = "The project that has more capsules is: " + projects[projectMoreCapsules].getProjectName();
+		}
+		return message;
+	}
+	
+	/**
 	*initPhases: Create an object and send it to project class.
 	*@param projectName Name of project
 	*@param name Name of phase
@@ -106,7 +165,7 @@ public class GradeSystem{
 	*@param active Phase activation status
 	*@return message Message status
 	*/
-	public String initPhases(String projectName,String name, Calendar startDate, Calendar finishDate, boolean approve, boolean active){
+	public String initPhases(String projectName,String name, Calendar startDate, /*int i, int month,*/Calendar finishDate, boolean approve, boolean active){
 		String message = "The project does not exist";
 		int position = getProjectPosition(projectName);
 		

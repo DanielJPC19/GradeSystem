@@ -82,6 +82,19 @@ public class Main{
 					break;
 				case 6:
 					listCapsulesByType();
+					exit = false;
+					break;
+				case 7:
+					listLearningsByPhase();
+					exit = false;
+					break;
+				case 8:
+					showProjectWithMoreCapsules();
+					exit = false;
+					break;
+				case 9:
+					/*countCollaboratorCapsules();*/
+					exit = false;
 					break;
 				default:
 					System.out.println("The option does not exist, try again.");
@@ -95,6 +108,42 @@ public class Main{
 		return calendar;
 	}
 	
+	/**
+	*showProjectWithMoreCapsules: Show the project that have more capsules
+	*/
+	public void showProjectWithMoreCapsules(){
+		String message = "";
+		String name;
+		
+		message = controller.showProjectWithMoreCapsules();
+		System.out.println(message);
+	}
+	/**
+	*listLearningsByPhase: Show all the capsules' learnings of a phase.
+	*/
+	public void listLearningsByPhase(){
+		String message = "";
+		int phase;
+		String projectName;
+		boolean exit = false;
+		
+		System.out.print("Type the project's name: ");
+		projectName = reader.next();
+		do{
+			System.out.println("Select the phase:");
+			System.out.printf("Start (0)\nAnalisys (1)\nDesign (2)\nExecution (3)\nClose and Following (4)\nProject Control (5)\n");
+			System.out.print("Option: ");
+			phase = reader.nextInt();
+			if (phase<0 || phase>5){
+				System.out.println("The option typed does not exist, type a correct option.");
+				exit = false;
+			}else{
+				message = controller.listLearningsByPhase(projectName,phase);
+				exit = true;
+			}
+		}while(exit==false);
+		System.out.println(message);
+	}
 	/**
 	*listCapsulesByType: Show all the capsules that have a specific type.
 	*/
@@ -197,9 +246,9 @@ public class Main{
 				System.out.println("Type a correct Phase");
 			}
 		}while(exit == false);
+		reader.nextLine();
 		System.out.println("Type the knowledge (description):");
 		description = reader.nextLine();
-		reader.nextLine();
 		exit = false;
 		
 		do{
@@ -226,9 +275,9 @@ public class Main{
 				System.out.println("Type a correct type of project");
 			}
 		}while(exit == false);
+		reader.nextLine();
 		System.out.println("Learning of the project:");
 		learning = reader.nextLine();
-		reader.nextLine();
 		System.out.println("Type 3 keywords");
 		for (int i = 0; i<3; i++){
 			System.out.println("Keyword number " + (i+1));
@@ -282,8 +331,10 @@ public class Main{
 		startDate = reader.next();
 		date = sdf.parse(startDate);
 		newStartDate = dateToCalendar(date);
+		//Modificar, importante
 		System.out.println("Type the project's finish date in format <dd/MM/yyyy>:");
 		finishDate = reader.next();
+		//^^ Importante modificar ^^
 		date = sdf.parse(finishDate);
 		newFinishDate = dateToCalendar(date);
 		System.out.print("Type the project's budget: ");
@@ -332,6 +383,7 @@ public class Main{
 			String startDate;
 			String finishDate;
 			Calendar newStartDate;
+			//Modificar
 			Calendar newFinishDate;
 			Date date;
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -342,6 +394,7 @@ public class Main{
 			startDate = reader.next();
 			date = sdf.parse(startDate);
 			newStartDate = dateToCalendar(date);
+			//Modificar
 			System.out.println("Finish date in format <dd/MM/yyyy>:");
 			finishDate = reader.next();
 			date = sdf.parse(finishDate);
@@ -355,6 +408,7 @@ public class Main{
 			startDate = reader.next();
 			date = sdf.parse(startDate);
 			newStartDate = dateToCalendar(date);
+			//Modificar
 			System.out.println("Finish date in format <dd/MM/yyyy>:");
 			finishDate = reader.next();
 			date = sdf.parse(finishDate);
@@ -368,6 +422,7 @@ public class Main{
 			startDate = reader.next();
 			date = sdf.parse(startDate);
 			newStartDate = dateToCalendar(date);
+			//Modificar
 			System.out.println("Finish date in format <dd/MM/yyyy>:");
 			finishDate = reader.next();
 			date = sdf.parse(finishDate);
@@ -381,6 +436,7 @@ public class Main{
 			startDate = reader.next();
 			date = sdf.parse(startDate);
 			newStartDate = dateToCalendar(date);
+			//Modificar
 			System.out.println("Finish date in format <dd/MM/yyyy>:");
 			finishDate = reader.next();
 			date = sdf.parse(finishDate);
@@ -394,6 +450,7 @@ public class Main{
 			startDate = reader.next();
 			date = sdf.parse(startDate);
 			newStartDate = dateToCalendar(date);
+			//Modificar
 			System.out.println("Finish date in format <dd/MM/yyyy>:");
 			finishDate = reader.next();
 			date = sdf.parse(finishDate);
@@ -407,6 +464,7 @@ public class Main{
 			startDate = reader.next();
 			date = sdf.parse(startDate);
 			newStartDate = dateToCalendar(date);
+			//Modificar
 			System.out.println("Finish date in format <dd/MM/yyyy>:");
 			finishDate = reader.next();
 			date = sdf.parse(finishDate);

@@ -154,11 +154,27 @@ public class Phase{
 		for (int i = 0; i<SIZE_CAPSULE; i++){
 			if (capsules[i]!=null){
 				if (capsules[i].getApprove()==true){
-					message = "\nId  of Capsule: "+capsules[i].getId()+"\nUrl: "+capsules[i].getUrl();
+					message += "\nId  of Capsule: "+capsules[i].getId()+"\nUrl: "+capsules[i].getUrl() + "\n";
 				}
 			}
 		}
 		return message;
+	}
+	
+	/**
+	*countCapsules: Count all the capsules of the phase.
+	*@return totalCapsules Number of capsules in the phase.
+	*/
+	public int countCapsules(){
+		int totalCapsules = 0;
+		
+		for (int i = 0; i<SIZE_CAPSULE; i++){
+			if(capsules[i]!=null){
+				totalCapsules += 1;
+			}
+		}
+		
+		return totalCapsules;
 	}
 	
 	/**
@@ -176,6 +192,23 @@ public class Phase{
 				}
 			}
 		}	
+		return message;
+	}
+	
+	/**
+	*listLearnings: Show all the learnings of a capsule in a phase.
+	*@return message Status of the showing.
+	*/
+	public String listLearnings(){
+		String message = "";
+		
+		for (int i = 0; i<SIZE_CAPSULE; i++){
+			if (capsules[0]==null){
+				message = "There's no any capsule.";
+			}else if (capsules[i]!=null){
+				message += "\nLearning " + (i+1) + ": " + capsules[i].getLearning();
+			}
+		}
 		return message;
 	}
 }
