@@ -34,6 +34,10 @@ public class KnowledgeCapsule{
 	*/
 	private boolean approve;
 	/**
+	*Publish of the capsule.
+	*/
+	private boolean publish;
+	/**
 	*url of the capsule
 	*/
 	private String url;
@@ -53,6 +57,7 @@ public class KnowledgeCapsule{
 		this.description = description;
 		this.type = type;
 		this.approve = approve;
+		this.publish = false;
 		this.learning = learning;
 		this.hashtag = hashtag;
 	}
@@ -92,6 +97,13 @@ public class KnowledgeCapsule{
 		return this.approve;
 	}
 	/**
+	*getPublish: Return the status of publication of the capsule.
+	*@return publish Publication of the capsule.
+	*/
+	public boolean getPublish(){
+		return this.publish;
+	}
+	/**
 	*getUrl: Return the url of the capsule.
 	*@return url Url of the capsule (html).
 	*/
@@ -115,6 +127,12 @@ public class KnowledgeCapsule{
 		this.approve = true;
 		String message = "The capsule has been approved";
 		return message;
+	}
+	/**
+	*setPublish: Change the status of the publish.
+	*/
+	public void setPublish(){
+		this.publish = true;
 	}
 	
 	/**

@@ -154,6 +154,7 @@ public class Phase{
 		for (int i = 0; i<SIZE_CAPSULE; i++){
 			if (capsules[i]!=null){
 				if (capsules[i].getApprove()==true){
+					capsules[i].setPublish();
 					message += "\nId  of Capsule: "+capsules[i].getId()+"\nUrl: "+capsules[i].getUrl() + "\n";
 				}
 			}
@@ -247,7 +248,7 @@ public class Phase{
 				hashtag = capsules[i].getHashtag();
 				for (int j = 0; j<keywords.length && exit == false; j++){
 					for (int k = 0; k<hashtag.length && exit == false; k++){
-						if(hashtag[k].equalsIgnoreCase(keywords[j]) && capsules[i].getApprove()==true ){//agregar verificación de publicado
+						if(hashtag[k].equalsIgnoreCase(keywords[j]) && capsules[i].getApprove()==true && capsules[i].getPublish()==true){
 							message += "\nCapsule info:" + "\nLearning: " + capsules[i].getLearning() + "\nDescription: " + capsules[i].getDescription() + "\n";
 							exit = true;
 						}

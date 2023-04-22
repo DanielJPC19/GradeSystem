@@ -9,7 +9,7 @@ public class Project{
 	/**
 	*Months of the phases ()
 	*/
-	private int[] months;//Agregar
+	private int[] months;
 	/**
 	*Name of the project.
 	*/
@@ -143,12 +143,13 @@ public class Project{
 	}
 	
 	/**
-	*culminatePhase: End a phase
-	*@param approve Approve status of phase
-	*@param active Active status of phase
-	*@return message Message status of culminating
+	*culminatePhase: End a phase.
+	*@param approve Approve status of phase.
+	*@param active Active status of phase.
+	*@param month Number of months in the duration of a phase.
+	*@return message Message status of culminating.
 	*/
-	public String culminatePhase(boolean approve, boolean active){
+	public String culminatePhase(boolean approve, boolean active, int month){
 		int position = getPositionActivePhase();
 		String message;
 		
@@ -157,8 +158,10 @@ public class Project{
 		}else{
 			phases[position].setApprove(approve);
 			phases[position].setActive(active);
+			setMonths(position,month);
 			if (position==(SIZE_PHASE-1)){
-				message = "The phase has been deactived and approved";
+				message = "The phase has been deactived and approved\nThe project has been finalized.";
+				setFinishDateReal();
 				//terminar proyecto!!!
 			}else{
 				message = "The phase has been deactived and approved";

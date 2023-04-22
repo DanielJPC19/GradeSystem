@@ -120,11 +120,10 @@ public class Main{
 		String projectName;
 		String[] keywords = new String[3];
 		
-		System.out.print("Type the project's name: ");
+		System.out.print("\nType the project's name: ");
 		projectName = reader.next();
 		for (int i = 0; i<3; i++){
 			System.out.print("Keyword No " + (i+1) + ": ");
-			System.out.println("Value: " + i);
 			keywords[i] = reader.next();
 		}
 		
@@ -139,7 +138,7 @@ public class Main{
 		String projectName;
 		String collaboratorName;
 		
-		System.out.print("Type the project's name: ");
+		System.out.print("\nType the project's name: ");
 		projectName = reader.next();
 		System.out.print("Type the collaborator's name: ");
 		collaboratorName = reader.next();
@@ -156,7 +155,7 @@ public class Main{
 		String name;
 		
 		message = controller.showProjectWithMoreCapsules();
-		System.out.println(message);
+		System.out.println("\n" + message);
 	}
 	/**
 	*listLearningsByPhase: Show all the capsules' learnings of a phase.
@@ -167,10 +166,10 @@ public class Main{
 		String projectName;
 		boolean exit = false;
 		
-		System.out.print("Type the project's name: ");
+		System.out.print("\nType the project's name: ");
 		projectName = reader.next();
 		do{
-			System.out.println("Select the phase:");
+			System.out.println("\nSelect the phase:");
 			System.out.printf("Start (0)\nAnalisys (1)\nDesign (2)\nExecution (3)\nClose and Following (4)\nProject Control (5)\n");
 			System.out.print("Option: ");
 			phase = reader.nextInt();
@@ -192,9 +191,12 @@ public class Main{
 		boolean exit = false;
 		int type = 0;
 		int option;
+		String projectName;
 		
+		System.out.print("\nType the project's name: ");
+		projectName = reader.next();
 		do{
-			System.out.println("Select the type of capsule:");
+			System.out.println("\nSelect the type of capsule:");
 			System.out.printf("Technical (1)\nManagement (2)\nDomain (3)\nExperiences (4)\n");
 			System.out.print("Option: ");
 			option = reader.nextInt();
@@ -222,7 +224,7 @@ public class Main{
 				}
 			}
 		}while(exit==false);
-		message = controller.listCapsulesByType(type);
+		message = controller.listCapsulesByType(projectName,type);
 		System.out.println(message);
 	}
 	
@@ -232,7 +234,7 @@ public class Main{
 	public void publishCapsule(){
 		String message = "";
 		String projectName;
-		System.out.print("Type the project's name: ");
+		System.out.print("\nType the project's name: ");
 		projectName = reader.next();
 		message = controller.publishCapsule(projectName);
 		System.out.println(message);
@@ -247,7 +249,7 @@ public class Main{
 		String idCapsule;
 		String message = "";
 		
-		System.out.print("Type the project's name: ");
+		System.out.print("\nType the project's name: ");
 		nameProject = reader.next();
 		System.out.print("Type the manager's name: ");
 		nameManager = reader.next();
@@ -272,7 +274,7 @@ public class Main{
 		boolean exit = false;
 		String message = "";
 		
-		System.out.print("Type project's name: ");
+		System.out.print("\nType project's name: ");
 		projectName = reader.next();
 		System.out.print("Type collaborator's name: ");
 		collaboratorName = reader.next();
@@ -324,20 +326,23 @@ public class Main{
 			hashtag[i]=reader.next();
 		}
 		message = controller.createCapsule(projectName, collaboratorName, phasePosition, description, type, learning, false, hashtag);
-		System.out.println(message);
+		System.out.println("> " + message);
 	}
 	/**
 	*culminatePhase: Deactive and approve a project's phase.
 	*/
 	public void culminatePhase(){
 		String name;
+		int month;
 		String message = "";
 		
-		System.out.print("Type the name of th project: ");
+		System.out.print("\nType the name of the project: ");
 		name = reader.next();
+		System.out.print("How long did the phase last?: ");
+		month = reader.nextInt();
 		if (controller.getExistentOfProject(name)==true){
 			System.out.println("The Phase will be deactived and approved...");
-			message = controller.culminatePhase(name,true,false);
+			message = controller.culminatePhase(name,true,false,month);
 		}else{
 			message = "The project does not exist";
 		}
@@ -361,7 +366,7 @@ public class Main{
 		String managerName;
 		String managerPhone;
 				
-		System.out.print("Type the project's name: ");
+		System.out.print("\nType the project's name: ");
 		name = reader.next();
 		System.out.print("Type the name of the client: ");
 		clientName = reader.next();
@@ -372,19 +377,19 @@ public class Main{
 		System.out.print("Type the project's budget: ");
 		budget = reader.nextDouble();
 		message = controller.createProject(name,clientName,newStartDate,budget);
-		System.out.println(message);
-		System.out.print("Type the name of client's manager:");
+		System.out.println(message + "\n");
+		System.out.print("Type the name of client's manager: ");
 		managerName = reader.next();
-		System.out.print("Type the phone:");
+		System.out.print("Type the phone: ");
 		managerPhone = reader.next();
 		message = controller.registerManager(name,0,managerName,managerPhone);
-		System.out.println(message);
-		System.out.print("Type the name of green's manager:");
+		System.out.println("> " + message);
+		System.out.print("Type the name of green's manager: ");
 		managerName = reader.next();
-		System.out.print("Type the phone:");
+		System.out.print("Type the phone: ");
 		managerPhone = reader.next();
 		message = controller.registerManager(name,1,managerName,managerPhone);
-		System.out.println(message);
+		System.out.println("> " + message);
 		
 		System.out.println("------------------------------------------------------------");
 		initPhases(name, newStartDate);

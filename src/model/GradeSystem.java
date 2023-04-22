@@ -233,11 +233,12 @@ public class GradeSystem{
 	*@param name Name of the project.
 	*@param approve Project approval.
 	*@param active Project activation.
+	*@param month Number of months in the duration of a phase.
 	*@return message Status message.
 	*/
-	public String culminatePhase(String name, boolean approve, boolean active){
+	public String culminatePhase(String name, boolean approve, boolean active, int month){
 		int position = getProjectPosition(name);
-		String message = projects[position].culminatePhase(approve,active);
+		String message = projects[position].culminatePhase(approve,active, month);
 		return message;
 	}
 	
@@ -326,11 +327,14 @@ public class GradeSystem{
 	/**
 	*listCapsulesByType: Search a capsule based in its type.
 	*@param type The type of the capsule.
+	*@param name Name of the project.
 	*@return message Status of the searching.
 	*/
-	public String listCapsulesByType(int type){
+	public String listCapsulesByType(String name,int type){
 		String message = "";
+		int position = getProjectPosition(name);
 		TypeCapsule newType = null;
+		
 		switch (type){
 			case 1:
 				newType = newType.TECHNICAL;
@@ -346,12 +350,16 @@ public class GradeSystem{
 				break;
 		}
 		
-		for (int i = 0; i<SIZE_PROJECT;i++){
-			if (projects[i]!=null){
-				message+=projects[i].listCapsulesByType(newType);
-			}else if (projects[0]==null){
-				message = "There's no any capsule with that type.";
+		if (position!=-1){
+			for (int i = 0; i<SIZE_PROJECT;i++){
+				if (projects[i]!=null){
+					message+=projects[i].listCapsulesByType(newType);
+				}else if (projects[0]==null){
+					message = "There's no any capsule with that type.";
+				}
 			}
+		}else{
+			message = "The project does not exist.";
 		}
 		
 		return message;
